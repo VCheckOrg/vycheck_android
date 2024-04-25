@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/segmentation_nav_graph"
+    app:startDestination="@id/dummySegmentationStartFragment">
+
+    <fragment
+        android:id="@+id/dummySegmentationStartFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_auto_parsing.ui.DummySegmentationStartFragment"
+        android:label="DummySegmentationStartFragment"
+        tools:layout="@layout/fragment_dummy_segmentation_start">
+        <action
+            android:id="@+id/action_dummySegmentationStartFragment_to_segTimeoutFragment"
+            app:destination="@id/segTimeoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/segTimeoutFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_auto_parsing.ui.SegTimeoutFragment"
+        android:label="SegTimeoutFragment"
+        tools:layout="@layout/fragment_error_seg_timeout"/>
+
+</navigation>

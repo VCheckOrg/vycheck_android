@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/liveness_activity_background"
+    tools:context=".presentation.liveness.VCheckLivenessActivity"
+    android:theme="@style/Theme.VCheckAndroidSDKDemo"
+    android:background="@color/vcheck_background_primary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/closeSDKBtnHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/pop_sdk_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/pop_sdk_title"
+                android:textColor="@color/vcheck_text"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/back_arrow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="137dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/black"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="120dp"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/livenessCosmeticsHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/utilMeasureLayout"
+            android:layout_marginTop="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/vcheck_transparent"/>
+
+        <com.vcheck.sdk.core.presentation.liveness.ui.AutoFitTextureView
+            android:id="@+id/camera_texture_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="120dp"/>
+
+        <com.vcheck.sdk.core.util.custom_views.CircleOverlayView
+            android:id="@+id/liveness_mask_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="120dp"/>
+
+        <View
+            android:id="@+id/liveness_circle_frame"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/liveness_mask_wrapper"
+            app:layout_constraintEnd_toEndOf="@id/liveness_mask_wrapper"
+            app:layout_constraintTop_toTopOf="@id/liveness_mask_wrapper"
+            app:layout_constraintBottom_toBottomOf="@id/liveness_mask_wrapper"
+            android:background="@drawable/liveness_circle_frame_common_state"/>
+
+        <View
+            android:id="@+id/stageSuccessAnimBorder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_liveness_stage_success_frame"
+            android:layout_marginTop="120dp" />
+
+        <TextView
+            android:id="@+id/check_face_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/vcheck_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/cosmetic_rounded_frame"
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="@drawable/rounded_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="20dp"/>
+
+        <ImageView
+            android:id="@+id/imgViewStaticStageIndication"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_success_circle"
+            app:layout_constraintEnd_toEndOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintTop_toTopOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintStart_toStartOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintBottom_toBottomOf="@id/cosmetic_rounded_frame"
+            android:contentDescription="@string/success_button" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/face_animation_view"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="fitXY"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:layout_constraintEnd_toEndOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintTop_toTopOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintStart_toStartOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintBottom_toBottomOf="@id/cosmetic_rounded_frame" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/arrow_animation_view"
+            android:layout_width="260dp"
+            android:layout_height="140dp"
+            app:lottie_rawRes="@raw/arrow"
+            android:scaleX="2.8"
+            android:scaleY="3.2"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:layout_constraintTop_toBottomOf="@id/cosmetic_rounded_frame"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/liveness_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:navGraph="@navigation/liveness_nav_graph" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
