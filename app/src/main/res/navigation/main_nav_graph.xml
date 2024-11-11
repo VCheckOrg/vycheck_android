@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/demoStartFragment">
+
+    <fragment
+        android:id="@+id/livenessInstructionsFragment"
+        android:name="com.vcheck.sdk.core.presentation.liveness.ui.LivenessInstructionsFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_liveness_instructions">
+    </fragment>
+
+    <fragment
+        android:id="@+id/chooseCountryFragment"
+        android:name="com.vcheck.sdk.core.presentation.country.ChooseCountryFragment"
+        android:label="choose_country_fragment"
+        tools:layout="@layout/fragment_choose_country">
+        <argument
+            android:name="countriesListTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CountriesListTO" />
+        <action
+            android:id="@+id/action_chooseCountryFragment_to_countryListFragment"
+            app:destination="@id/countryListFragment">
+            <argument
+                android:name="countriesListTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CountriesListTO" />
+        </action>
+        <action
+            android:id="@+id/action_chooseCountryFragment_to_chooseProviderFragment"
+            app:destination="@id/chooseProviderFragment" />
+        <action
+            android:id="@+id/action_chooseCountryFragment_to_providerChosenFragment"
+            app:destination="@id/providerChosenFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chooseDocMethodScreen"
+        android:name="com.vcheck.sdk.core.presentation.doc_type.ChooseDocMethodFragment"
+        android:label="choose_doc_method_screen"
+        tools:layout="@layout/fragment_choose_doc_method">
+        <action
+            android:id="@+id/action_chooseDocMethodScreen_to_photoInstructionsFragment"
+            app:destination="@id/photoInstructionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoUploadScreen"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_manual.TakeDocPhotoFragment"
+        android:label="photo_upload_screen"
+        tools:layout="@layout/fragment_photo_upload">
+        <action
+            android:id="@+id/action_photoUploadScreen_to_checkPhotoFragment"
+            app:destination="@id/checkPhotoFragment">
+            <argument
+                android:name="checkPhotoDataTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckPhotoDataTO" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoInstructionsFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_manual.PhotoInstructionsFragment"
+        android:label="photo_instructions_fragment"
+        tools:layout="@layout/fragment_photo_instructions">
+        <action
+            android:id="@+id/action_photoInstructionsFragment_to_photoUploadScreen"
+            app:destination="@id/photoUploadScreen" />
+        <action
+            android:id="@+id/action_photoInstructionsFragment_to_segmentationStartFragment"
+            app:destination="@id/segmentationStartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="com.vcheck.sdk.core.presentation.common_screens.ErrorFragment"
+        android:label="error_fragment"
+        tools:layout="@layout/fragment_error_common" />
+
+    <fragment
+        android:id="@+id/noCameraFragment"
+        android:name="com.vcheck.sdk.core.presentation.common_screens.NoCameraFragment"
+        android:label="no_camera_fragment"
+        tools:layout="@layout/fragment_no_camera" />
+
+    <fragment
+        android:id="@+id/checkPhotoFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_manual.CheckPhotoFragment"
+        android:label="check_photo_fragment"
+        tools:layout="@layout/fragment_check_doc_photo">
+        <argument
+            android:name="checkPhotoDataTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckPhotoDataTO" />
+        <action
+            android:id="@+id/action_checkPhotoFragment_to_checkInfoFragment"
+            app:destination="@id/checkDocInfoFragment" />
+        <action
+            android:id="@+id/action_checkPhotoFragment_to_zoomedPhotoScreen"
+            app:destination="@id/zoomedPhotoFragment">
+            <argument
+                android:name="zoomPhotoTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.ZoomPhotoTO" />
+        </action>
+        <action
+            android:id="@+id/action_checkPhotoFragment_to_docVerificationNotSuccessfulFragment"
+            app:destination="@id/docVerificationNotSuccessfulFragment">
+            <argument
+                android:name="checkDocInfoDataTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckDocInfoDataTO" />
+        </action>
+        <action
+            android:id="@+id/action_checkPhotoFragment_to_segErrorFragment"
+            app:destination="@id/segErrorFragment" />
+        <argument
+            android:name="photoUploadType"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.PhotoUploadType" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkDocInfoFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_check.CheckDocInfoFragment"
+        android:label="check_doc_info_fragment"
+        tools:layout="@layout/fragment_check_doc_info">
+        <argument
+            android:name="checkDocInfoDataTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckDocInfoDataTO"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_checkDocInfoFragment_to_livenessInstructionsFragment"
+            app:destination="@id/livenessInstructionsFragment" />
+        <argument
+            android:name="uplaodedDocId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/countryListFragment"
+        android:name="com.vcheck.sdk.core.presentation.country.CountryListFragment"
+        android:label="country_list_fragment"
+        tools:layout="@layout/fragment_country_list">
+        <argument
+            android:name="countriesListTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CountriesListTO" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/demoStartFragment"
+        android:name="com.vcheck.sdk.core.presentation.start.VCheckStartFragment"
+        android:label="fragment_demo_start"
+        tools:layout="@layout/fragment_demo_start">
+        <action
+            android:id="@+id/action_demoStartFragment_to_chooseCountryFragment"
+            app:destination="@id/chooseCountryFragment">
+            <argument
+                android:name="countriesListTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CountriesListTO" />
+        </action>
+        <action
+            android:id="@+id/action_demoStartFragment_to_verifSentFragment"
+            app:destination="@id/verifSentFragment" />
+        <action
+            android:id="@+id/action_demoStartFragment_to_providerChosenFragment"
+            app:destination="@id/providerChosenFragment" />
+        <action
+            android:id="@+id/action_demoStartFragment_to_chooseProviderFragment"
+            app:destination="@id/chooseProviderFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/zoomedPhotoFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_manual.ZoomedPhotoFragment"
+        android:label="zoomed_photo_fragment"
+        tools:layout="@layout/fragment_zoomed_doc_photo">
+        <argument
+            android:name="zoomPhotoTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.ZoomPhotoTO" />
+    </fragment>
+    <action android:id="@+id/action_global_errorFragment" app:destination="@id/errorFragment" />
+    <fragment
+        android:id="@+id/docVerificationNotSuccessfulFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_check.DocVerifErrorFragment"
+        android:label="fragment_doc_verification_not_successful"
+        tools:layout="@layout/fragment_error_doc_verification" >
+        <action
+            android:id="@+id/action_docVerificationNotSuccessfulFragment_to_checkDocInfoFragment"
+            app:destination="@id/checkDocInfoFragment">
+            <argument
+                android:name="checkDocInfoDataTO"
+                app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckDocInfoDataTO" />
+        </action>
+        <argument
+            android:name="checkDocInfoDataTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.CheckDocInfoDataTO" />
+    </fragment><action android:id="@+id/action_global_demoStartFragment" app:destination="@id/demoStartFragment"/>
+    <fragment
+        android:id="@+id/segmentationStartFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_auto_parsing.ui.SegmentationStartFragment"
+        android:label="SegmentationStartFragment"
+        tools:layout="@layout/fragment_segmentation_start">
+        <action
+            android:id="@+id/action_segmentationStartFragment_to_checkPhotoFragment"
+            app:destination="@id/checkPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/segErrorFragment"
+        android:name="com.vcheck.sdk.core.presentation.doc_photo_auto_parsing.ui.SegErrorFragment"
+        android:label="SegErrorFragment"
+        tools:layout="@layout/fragment_error_seg_common">
+        <action
+            android:id="@+id/action_segErrorFragment_to_checkPhotoFragment"
+            app:destination="@id/checkPhotoFragment" />
+        <action
+            android:id="@+id/action_segErrorFragment_to_photoInstructionsFragment"
+            app:destination="@id/photoInstructionsFragment" />
+    </fragment>
+    <action android:id="@+id/action_global_chooseDocMethodScreen" app:destination="@id/chooseDocMethodScreen"/>
+    <fragment
+        android:id="@+id/verifSentFragment"
+        android:name="com.vcheck.sdk.core.presentation.common_screens.VerifSentFragment"
+        android:label="fragment_verif_sent"
+        tools:layout="@layout/fragment_verif_sent" /><action android:id="@+id/action_global_photoUploadScreen" app:destination="@id/photoUploadScreen"/><action android:id="@+id/action_global_checkPhotoFragment" app:destination="@id/checkPhotoFragment"/>
+    <fragment
+        android:id="@+id/chooseProviderFragment"
+        android:name="com.vcheck.sdk.core.presentation.provider.ChooseProviderFragment"
+        android:label="ChooseProviderFragment" >
+        <argument
+            android:name="chooseProviderLogicTO"
+            app:argType="com.vcheck.sdk.core.presentation.transferrable_objects.ChooseProviderLogicTO" />
+        <action
+            android:id="@+id/action_chooseProviderFragment_to_providerChosenFragment"
+            app:destination="@id/providerChosenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/providerChosenFragment"
+        android:name="com.vcheck.sdk.core.presentation.provider.InitProviderFragment"
+        android:label="fragment_provider_chosen"
+        tools:layout="@layout/fragment_init_provider" >
+        <action
+            android:id="@+id/action_providerChosenFragment_to_chooseDocMethodScreen"
+            app:destination="@id/chooseDocMethodScreen" />
+        <action
+            android:id="@+id/action_providerChosenFragment_to_livenessInstructionsFragment"
+            app:destination="@id/livenessInstructionsFragment" />
+        <action
+            android:id="@+id/action_providerChosenFragment_to_checkDocInfoFragment"
+            app:destination="@id/checkDocInfoFragment" />
+    </fragment>
+
+</navigation>

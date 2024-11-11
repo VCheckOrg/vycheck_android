@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="const17">17dp</dimen>
+    <dimen name="const12">12dp</dimen>
+    <dimen name="const12sp">12sp</dimen>
+</resources>
